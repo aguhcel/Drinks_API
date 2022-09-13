@@ -1,16 +1,19 @@
-# This is a sample Python script.
+# %%
+import requests
+import json
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# %%
+# Test API thecocktaildb
+def cocktails():
+    f = r"https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+    data = requests.get(f)
+    tt = json.loads(data.text)
+    # webbrowser.open(tt["url"])
+
+    for i in (tt["drinks"]):
+        print(i, "\n")
+    print(len(tt["drinks"]))
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+cocktails()
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
